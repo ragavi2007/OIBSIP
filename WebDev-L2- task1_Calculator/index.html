@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amber &mdash; Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- The LED-style display font is not a real Google Font; style.css falls back
+       to Courier New / monospace for that authentic digital-readout look -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="calculator" aria-label="Calculator">
+
+    <!-- Brand plate: identifies the "instrument" -->
+    <div class="brand-plate">
+      <span class="brand-name">AMBER</span>
+      <span class="brand-model">MODEL&nbsp;01&nbsp;&middot;&nbsp;DIGITAL</span>
+    </div>
+
+    <!-- Display bezel: recessed screen housing -->
+    <section class="display-bezel">
+      <div class="display-screen">
+        <div id="expression" class="expression" aria-hidden="true"></div>
+        <div id="display" class="display" aria-live="polite">0</div>
+      </div>
+      <div class="bezel-label">
+        <span class="power-dot" aria-hidden="true"></span>
+        <span>READY</span>
+      </div>
+    </section>
+
+    <!-- Key panel -->
+    <section class="keypad" aria-label="Calculator keys">
+
+      <!-- Row 1: utility keys -->
+      <button type="button" class="key key--util" id="key-clear" aria-label="Clear">C</button>
+      <button type="button" class="key key--util" id="key-backspace" aria-label="Backspace">⌫</button>
+      <button type="button" class="key key--util key--percent" id="key-percent" aria-label="Percent">%</button>
+      <button type="button" class="key key--op" id="key-divide" aria-label="Divide">&divide;</button>
+
+      <!-- Row 2 -->
+      <button type="button" class="key key--num" data-num="7">7</button>
+      <button type="button" class="key key--num" data-num="8">8</button>
+      <button type="button" class="key key--num" data-num="9">9</button>
+      <button type="button" class="key key--op" id="key-multiply" aria-label="Multiply">&times;</button>
+
+      <!-- Row 3 -->
+      <button type="button" class="key key--num" data-num="4">4</button>
+      <button type="button" class="key key--num" data-num="5">5</button>
+      <button type="button" class="key key--num" data-num="6">6</button>
+      <button type="button" class="key key--op" id="key-subtract" aria-label="Subtract">&minus;</button>
+
+      <!-- Row 4 -->
+      <button type="button" class="key key--num" data-num="1">1</button>
+      <button type="button" class="key key--num" data-num="2">2</button>
+      <button type="button" class="key key--num" data-num="3">3</button>
+      <button type="button" class="key key--op" id="key-add" aria-label="Add">+</button>
+
+      <!-- Row 5 -->
+      <button type="button" class="key key--num key--zero" data-num="0">0</button>
+      <button type="button" class="key key--num" id="key-decimal" aria-label="Decimal point">.</button>
+      <button type="button" class="key key--equals" id="key-equals" aria-label="Equals">=</button>
+
+    </section>
+
+    <div class="rivet rivet--tl" aria-hidden="true"></div>
+    <div class="rivet rivet--tr" aria-hidden="true"></div>
+    <div class="rivet rivet--bl" aria-hidden="true"></div>
+    <div class="rivet rivet--br" aria-hidden="true"></div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+/* =========================================================================
+   AMBER — a retro digital-instrument calculator
+   Design language: brushed-metal control panel + amber LED display.
+   Inspired by vintage scientific calculators (TI / Casio era), not glass
+   neumorphism. Every key has real, physical "press" depth.
+   ========================================================================= */
+
+:root {
+  /* ---- Color tokens ------------------------------------------------- */
+  --case:           #1c1b1a;   /* outer body */
+  --panel:          #242220;   /* recessed display housing */
+  --panel-edge:     #0f0e0d;   /* inner shadow of the bezel */
+  --key-face:       #f4f1ea;   /* number key top */
+  --key-face-shadow:#c9c4b7;   /* number key shadow/edge */
+  --key-op:         #3d3a37;   /* operator key top */
+  --key-op-shadow:  #232120;   /* operator key edge */
+  --key-util:       #514d49;  /* clear / backspace / percent */
+  --key-util-shadow:#2c2a28;
+  --amber:          #ff8c42;   /* LED glow accent */
+  --amber-dim:      #7a4420;
+  --red:            #ff5c5c;   /* error / clear accent */
+  --green-led:      #6fdc8c;
+
+  /* ---- Type ----------------------------------------------------------*/
+  --font-display: 'DSEG7 Classic', 'Courier New', monospace;
+  --font-ui: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: radial-gradient(circle at 50% 0%, #2b2926 0%, #14130f 70%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  color: var(--key-face);
+}
+
+/* =========================================================================
+   CALCULATOR BODY — the "case" of the instrument
+   ========================================================================= */
+
+.calculator {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: linear-gradient(160deg, #232120 0%, var(--case) 55%, #181716 100%);
+  border-radius: 22px;
+  padding: 22px 18px 26px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+/* Rivets — small detail that sells the "machined panel" feel */
+.rivet {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #6b6862, #0f0e0d 75%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+.rivet--tl { top: 12px; left: 12px; }
+.rivet--tr { top: 12px; right: 12px; }
+.rivet--bl { bottom: 14px; left: 12px; }
+.rivet--br { bottom: 14px; right: 12px; }
+
+/* =========================================================================
+   BRAND PLATE
+   ========================================================================= */
+
+.brand-plate {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2px 6px 14px;
+  letter-spacing: 0.08em;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--amber);
+  text-shadow: 0 0 10px rgba(255, 140, 66, 0.35);
+}
+
+.brand-model {
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: #847e74;
+  text-transform: uppercase;
+}
+
+/* =========================================================================
+   DISPLAY BEZEL — recessed amber-LED screen
+   ========================================================================= */
+
+.display-bezel {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 16px 16px 10px;
+  margin-bottom: 18px;
+  box-shadow:
+    inset 0 4px 10px rgba(0, 0, 0, 0.55),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+    0 1px 0 rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--panel-edge);
+}
+
+.display-screen {
+  min-height: 84px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+  /* subtle scanline texture on the "glass" */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.expression {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--amber-dim);
+  letter-spacing: 0.02em;
+  min-height: 1.1em;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  opacity: 0.85;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 9vw, 2.6rem);
+  font-weight: 400;
+  color: var(--amber);
+  text-shadow:
+    0 0 4px rgba(255, 140, 66, 0.65),
+    0 0 18px rgba(255, 140, 66, 0.35);
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  transition: opacity 0.06s ease;
+}
+
+/* Error state recolors the LED red, like an instrument fault light */
+.display.is-error {
+  color: var(--red);
+  text-shadow:
+    0 0 4px rgba(255, 92, 92, 0.7),
+    0 0 18px rgba(255, 92, 92, 0.4);
+  font-size: clamp(1rem, 5.6vw, 1.25rem);
+  white-space: normal;
+}
+
+/* Flicker-in animation each time a new result resolves — the signature
+   micro-interaction that sells the "real LED instrument" feel. */
+@keyframes led-flicker {
+  0%   { opacity: 0.2; }
+  18%  { opacity: 0.85; }
+  32%  { opacity: 0.3; }
+  45%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+.display.flicker {
+  animation: led-flicker 0.32s steps(2, end);
+}
+
+.bezel-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6f6a60;
+  padding: 6px 2px 0;
+}
+
+.power-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-led);
+  box-shadow: 0 0 6px rgba(111, 220, 140, 0.8);
+}
+
+/* =========================================================================
+   KEYPAD — CSS Grid layout
+   ========================================================================= */
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Base key — shared physical styling for every button.
+   Depth is built from a layered box-shadow, not a border. */
+.key {
+  position: relative;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-ui);
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 18px 0;
+  color: #1c1b1a;
+  background: var(--key-face);
+  box-shadow:
+    0 3px 0 var(--key-face-shadow),
+    0 6px 10px rgba(0, 0, 0, 0.35);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.key:hover {
+  filter: brightness(1.05);
+}
+
+/* The satisfying "mechanical press" — key drops to meet its shadow */
+.key:active,
+.key.is-pressed {
+  transform: translateY(3px);
+  box-shadow:
+    0 0 0 var(--key-face-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.key:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* Number keys ---------------------------------------------------------- */
+.key--num {
+  background: var(--key-face);
+  color: #1c1b1a;
+}
+
+.key--zero {
+  grid-column: span 2;
+}
+
+/* Operator keys (÷ × − +) ------------------------------------------------ */
+.key--op {
+  background: var(--key-op);
+  color: var(--amber);
+  box-shadow:
+    0 3px 0 var(--key-op-shadow),
+    0 6px 10px rgba(0, 0, 0, 0.35);
+  font-size: 1.3rem;
+}
+
+.key--op:active,
+.key--op.is-pressed {
+  box-shadow:
+    0 0 0 var(--key-op-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Locks the active chained-operator visually until next press */
+.key--op.is-active {
+  background: var(--amber);
+  color: #1c1b1a;
+  box-shadow:
+    0 3px 0 var(--amber-dim),
+    0 0 14px rgba(255, 140, 66, 0.55);
+}
+
+/* Utility keys (C, backspace, %) ----------------------------------------*/
+.key--util {
+  background: var(--key-util);
+  color: #f4f1ea;
+  box-shadow:
+    0 3px 0 var(--key-util-shadow),
+    0 6px 10px rgba(0, 0, 0, 0.35);
+  font-size: 1rem;
+}
+
+.key--util:active,
+.key--util.is-pressed {
+  box-shadow:
+    0 0 0 var(--key-util-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#key-clear {
+  color: var(--red);
+}
+
+/* Equals key — the one accent-bright key, full-width anchor of the grid */
+.key--equals {
+  grid-column: span 2;
+  background: linear-gradient(160deg, #ffa15c, var(--amber));
+  color: #1c1b1a;
+  font-size: 1.4rem;
+  box-shadow:
+    0 3px 0 var(--amber-dim),
+    0 6px 14px rgba(255, 140, 66, 0.3);
+}
+
+.key--equals:hover {
+  filter: brightness(1.08);
+}
+
+.key--equals:active,
+.key--equals.is-pressed {
+  box-shadow:
+    0 0 0 var(--amber-dim),
+    0 2px 6px rgba(255, 140, 66, 0.25);
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media (max-width: 380px) {
+  .calculator {
+    max-width: 100%;
+    padding: 18px 12px 20px;
+  }
+  .key {
+    padding: 16px 0;
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 480px) {
+  .calculator {
+    max-width: 380px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .display.flicker {
+    animation: none;
+  }
+  .key {
+    transition: none;
+  }
+}
