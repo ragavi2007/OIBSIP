@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaTech AI — Intelligence Infrastructure for Modern Teams</title>
+  <meta name="description" content="NovaTech AI builds the model infrastructure that powers reliable, production-grade AI products.">
+
+  <!-- Google Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (utility/labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ SKIP LINK (accessibility) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a href="#home" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        NovaTech <span class="brand-ai">AI</span>
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </label>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="home" class="hero">
+      <div class="hero-inner container">
+
+        <div class="hero-content">
+          <p class="eyebrow">// intelligence infrastructure</p>
+          <h1 class="hero-title">
+            Production‑grade AI,<br>
+            built on a <span class="text-accent">stable signal</span>.
+          </h1>
+          <p class="hero-subtitle">
+            NovaTech AI gives engineering teams the model orchestration, monitoring,
+            and deployment layer they need to ship AI features that hold up under
+            real traffic — not just in a demo.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Request a Demo</a>
+            <a href="#services" class="btn btn-ghost">Explore Platform</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">99.98%</span>
+              <span class="stat-label">Uptime SLA</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">4.2B+</span>
+              <span class="stat-label">Inferences / mo</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">120ms</span>
+              <span class="stat-label">Avg. Latency</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Signature visual: signal trace motif (pure CSS/SVG, no JS) -->
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 420 360" class="signal-svg">
+            <defs>
+              <linearGradient id="traceGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#FF8A3D" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#FF8A3D" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#FF8A3D" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect x="20" y="40" width="380" height="280" rx="18" class="panel-frame"/>
+            <line x1="20" y1="110" x2="400" y2="110" class="grid-line"/>
+            <line x1="20" y1="180" x2="400" y2="180" class="grid-line"/>
+            <line x1="20" y1="250" x2="400" y2="250" class="grid-line"/>
+            <path class="trace-path" d="M20,200 L70,200 L95,120 L120,260 L150,90 L180,200 L210,200 L235,150 L260,200 L290,200 L315,60 L340,200 L400,200" />
+            <circle cx="150" cy="90" r="5" class="trace-node"/>
+            <circle cx="315" cy="60" r="5" class="trace-node trace-node-delay"/>
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section id="about" class="about">
+      <div class="container about-grid">
+
+        <div class="about-text">
+          <p class="eyebrow">// about novatech</p>
+          <h2 class="section-title">We treat AI like infrastructure, not magic.</h2>
+          <p class="section-body">
+            Most AI tooling optimizes for the first demo. We optimize for the
+            ten‑thousandth request. NovaTech AI was founded by infrastructure
+            engineers who were tired of watching promising AI products break down
+            the moment real users showed up.
+          </p>
+          <p class="section-body">
+            Today, our platform sits underneath the products of fast‑growing
+            startups and established enterprises alike — handling model routing,
+            fallback logic, observability, and cost control so internal teams can
+            focus on the product, not the plumbing.
+          </p>
+
+          <ul class="about-list">
+            <li><span class="check" aria-hidden="true">&#10003;</span> Founded by engineers from distributed‑systems backgrounds</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> SOC 2 Type II compliant, enterprise‑ready from day one</li>
+            <li><span class="check" aria-hidden="true">&#10003;</span> Model‑agnostic — works across every major provider</li>
+          </ul>
+        </div>
+
+        <div class="about-card-stack">
+          <article class="info-card">
+            <h3>Our Mission</h3>
+            <p>Make reliable AI infrastructure the default, not the exception, for every team building with language models.</p>
+          </article>
+          <article class="info-card info-card-accent">
+            <h3>Our Approach</h3>
+            <p>Boring, observable, well‑instrumented systems. The unglamorous work that makes AI products trustworthy in production.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ SERVICES / FEATURES SECTION ============ -->
+    <section id="services" class="features">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">// what we offer</p>
+          <h2 class="section-title">A complete layer for production AI</h2>
+          <p class="section-body section-body-center">
+            Four pillars, one platform. Everything your team needs to take an AI
+            feature from prototype to dependable product.
+          </p>
+        </div>
+
+        <div class="features-grid">
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M24 4 L40 14 V34 L24 44 L8 34 V14 Z" class="icon-stroke"/><circle cx="24" cy="24" r="6" class="icon-stroke"/></svg>
+            </div>
+            <h3>Model Orchestration</h3>
+            <p>Route every request to the right model based on cost, latency, and capability — with automatic fallback when a provider degrades.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="6" y="26" width="6" height="16" class="icon-stroke"/><rect x="21" y="14" width="6" height="28" class="icon-stroke"/><rect x="36" y="20" width="6" height="22" class="icon-stroke"/></svg>
+            </div>
+            <h3>Real‑Time Monitoring</h3>
+            <p>Track latency, token spend, and output quality across every model and endpoint from a single, live dashboard.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="28" rx="3" class="icon-stroke"/><path d="M8 18 H40" class="icon-stroke"/><circle cx="14" cy="14" r="1.4" class="icon-fill"/></svg>
+            </div>
+            <h3>Secure Deployment</h3>
+            <p>Ship to production behind your own VPC with end‑to‑end encryption, audit logs, and role‑based access control.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M6 38 L18 22 L26 30 L42 10" class="icon-stroke"/><path d="M32 10 H42 V20" class="icon-stroke"/></svg>
+            </div>
+            <h3>Cost Optimization</h3>
+            <p>Automatic prompt caching and model downgrading cut inference spend by up to 40% without touching output quality.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" class="icon-stroke"/><path d="M24 14 V24 L31 29" class="icon-stroke"/></svg>
+            </div>
+            <h3>Sub‑Second Response</h3>
+            <p>Edge‑deployed inference endpoints keep response times low, even at global scale and peak concurrency.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M24 6 L42 16 V32 L24 42 L6 32 V16 Z" class="icon-stroke"/><path d="M24 18 V30 M18 24 H30" class="icon-stroke"/></svg>
+            </div>
+            <h3>Dedicated Support</h3>
+            <p>A named infrastructure engineer on call for every enterprise account — not a ticket queue.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CALL TO ACTION BAND ============ -->
+    <section id="contact" class="cta-band">
+      <div class="container cta-inner">
+        <h2 class="cta-title">Ready to make your AI stack production‑ready?</h2>
+        <p class="cta-subtitle">Talk to our team and get a tailored rollout plan within 48 hours.</p>
+        <a href="mailto:hello@novatech.ai" class="btn btn-primary btn-large">Contact Sales</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <a href="#home" class="brand brand-footer">
+          <span class="brand-mark" aria-hidden="true"></span>
+          NovaTech <span class="brand-ai">AI</span>
+        </a>
+        <p class="footer-tagline">Intelligence infrastructure for teams that ship.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Footer navigation">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>hello@novatech.ai</li>
+          <li>+1 (555) 014‑2099</li>
+          <li>148 Signal Avenue, San Francisco, CA</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <ul class="social-list">
+          <li><a href="#" aria-label="NovaTech AI on LinkedIn">LinkedIn</a></li>
+          <li><a href="#" aria-label="NovaTech AI on X / Twitter">X / Twitter</a></li>
+          <li><a href="#" aria-label="NovaTech AI on GitHub">GitHub</a></li>
+          <li><a href="#" aria-label="NovaTech AI on YouTube">YouTube</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 NovaTech AI, Inc. All rights reserved.</p>
+      <p>Built for the Oasis Infobyte Web Development Internship — Level 1, Task 1.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
