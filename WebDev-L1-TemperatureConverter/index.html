@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <meta name="description" content="Convert temperature values between Celsius, Fahrenheit, and Kelvin instantly.">
+
+  <!-- Google Fonts: Sora (display), Inter (body/labels), JetBrains Mono (numeric results) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <main id="main" class="page">
+    <div class="background-glow" aria-hidden="true"></div>
+
+    <section class="converter-card" aria-labelledby="converter-heading">
+
+      <!-- ===== Header ===== -->
+      <header class="card-header">
+        <p class="eyebrow">thermal conversion tool</p>
+        <h1 id="converter-heading">Temperature Converter</h1>
+        <p class="card-subtitle">Convert between Celsius, Fahrenheit, and Kelvin instantly.</p>
+      </header>
+
+      <div class="card-body">
+
+        <!-- ===== Mercury gauge: signature visual, reflects entered value ===== -->
+        <div class="gauge" aria-hidden="true">
+          <div class="gauge-track">
+            <div class="gauge-fill" id="gaugeFill"></div>
+          </div>
+        </div>
+
+        <!-- ===== Form ===== -->
+        <form id="converterForm" class="converter-form" novalidate>
+
+          <div class="field-group">
+            <label for="tempInput">Temperature value</label>
+            <input
+              type="text"
+              inputmode="decimal"
+              id="tempInput"
+              name="tempInput"
+              placeholder="e.g. 25"
+              autocomplete="off"
+              aria-describedby="formError"
+            >
+          </div>
+
+          <div class="field-group">
+            <label for="unitSelect">Input unit</label>
+            <select id="unitSelect" name="unitSelect">
+              <option value="celsius">Celsius (°C)</option>
+              <option value="fahrenheit">Fahrenheit (°F)</option>
+              <option value="kelvin">Kelvin (K)</option>
+            </select>
+          </div>
+
+          <!-- Error message region, announced to assistive tech when populated -->
+          <p id="formError" class="form-error" role="alert" aria-live="polite"></p>
+
+          <button type="submit" class="btn-convert">Convert</button>
+        </form>
+
+        <!-- ===== Results ===== -->
+        <div class="results" id="results" aria-live="polite">
+          <p class="results-placeholder" id="resultsPlaceholder">
+            Enter a value above to see it converted across all three scales.
+          </p>
+
+          <div class="results-grid" id="resultsGrid" hidden>
+            <div class="result-pill" data-scale="celsius">
+              <span class="result-label">Celsius</span>
+              <span class="result-value"><span id="celsiusValue">—</span>°C</span>
+            </div>
+            <div class="result-pill" data-scale="fahrenheit">
+              <span class="result-label">Fahrenheit</span>
+              <span class="result-value"><span id="fahrenheitValue">—</span>°F</span>
+            </div>
+            <div class="result-pill" data-scale="kelvin">
+              <span class="result-label">Kelvin</span>
+              <span class="result-value"><span id="kelvinValue">—</span>K</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <footer class="card-footer">
+        <p>Absolute zero: −273.15°C&nbsp;·&nbsp;−459.67°F&nbsp;·&nbsp;0K</p>
+      </footer>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
