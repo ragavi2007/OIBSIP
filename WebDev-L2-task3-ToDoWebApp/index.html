@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasko — Your Smart To-Do App</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Plus Jakarta Sans from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="app-header">
+    <div class="header-inner">
+
+      <!-- Branding -->
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-list-check"></i>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-name">Tasko</h1>
+          <p class="brand-tagline">Focus on what matters today.</p>
+        </div>
+      </div>
+
+      <!-- Progress Ring (signature element) -->
+      <div class="progress-ring-wrap" id="progressWrap" title="Task completion progress">
+        <svg class="progress-ring" viewBox="0 0 80 80" width="80" height="80">
+          <!-- Background track -->
+          <circle class="ring-track" cx="40" cy="40" r="32" />
+          <!-- Animated progress arc -->
+          <circle class="ring-fill" id="ringFill" cx="40" cy="40" r="32" />
+        </svg>
+        <div class="ring-label">
+          <span class="ring-pct" id="ringPct">0%</span>
+          <span class="ring-sub">done</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat-pill pending-pill">
+        <i class="fa-regular fa-clock"></i>
+        <span id="pendingCount">0</span>
+        <span>Pending</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-pill done-pill">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="completedCount">0</span>
+        <span>Completed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-pill total-pill">
+        <i class="fa-solid fa-layer-group"></i>
+        <span id="totalCount">0</span>
+        <span>Total</span>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- ===================== INPUT AREA ===================== -->
+  <main class="app-main">
+
+    <section class="input-section">
+      <div class="input-card">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-pen-to-square input-icon"></i>
+            <input
+              type="text"
+              id="taskInput"
+              class="task-input"
+              placeholder="What needs to be done today?"
+              maxlength="200"
+              autocomplete="off"
+              aria-label="New task input"
+            />
+            <span class="char-counter" id="charCounter">0/200</span>
+          </div>
+          <button class="add-btn" id="addBtn" aria-label="Add task">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add Task</span>
+          </button>
+        </div>
+        <!-- Validation message -->
+        <p class="validation-msg" id="validationMsg" role="alert" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ===================== TASKS BOARD ===================== -->
+    <section class="board">
+
+      <!-- Pending column -->
+      <div class="column" id="pendingColumn">
+        <div class="column-header">
+          <div class="column-title-group">
+            <span class="column-dot dot-pending"></span>
+            <h2 class="column-title">Pending Tasks</h2>
+          </div>
+          <span class="column-badge badge-pending" id="pendingBadge">0</span>
+        </div>
+
+        <!-- Task list -->
+        <ul class="task-list" id="pendingList" aria-label="Pending tasks">
+          <!-- Tasks injected by JS -->
+        </ul>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="pendingEmpty">
+          <div class="empty-illustration">
+            <i class="fa-regular fa-face-smile-beam"></i>
+          </div>
+          <p class="empty-title">All clear!</p>
+          <p class="empty-sub">No pending tasks. Add one above to get started.</p>
+        </div>
+      </div>
+
+      <!-- Completed column -->
+      <div class="column" id="completedColumn">
+        <div class="column-header">
+          <div class="column-title-group">
+            <span class="column-dot dot-done"></span>
+            <h2 class="column-title">Completed</h2>
+          </div>
+          <div class="completed-header-actions">
+            <span class="column-badge badge-done" id="completedBadge">0</span>
+            <button class="clear-all-btn" id="clearAllBtn" title="Clear all completed tasks" aria-label="Clear all completed tasks">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+
+        <ul class="task-list" id="completedList" aria-label="Completed tasks">
+          <!-- Tasks injected by JS -->
+        </ul>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="completedEmpty">
+          <div class="empty-illustration">
+            <i class="fa-regular fa-hourglass"></i>
+          </div>
+          <p class="empty-title">Nothing here yet.</p>
+          <p class="empty-sub">Complete a task and watch it land here.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================== TOAST NOTIFICATIONS ===================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="script.js"></script>
+
+</body>
+</html>
