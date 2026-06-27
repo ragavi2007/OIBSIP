@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — AuthVault</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background layers -->
+  <div class="bg-canvas" aria-hidden="true"></div>
+  <div class="bg-dots"   aria-hidden="true"></div>
+
+  <main class="page-wrapper">
+    <div class="auth-card" role="main">
+
+      <!-- Brand mark -->
+      <a href="index.html" class="brand" aria-label="AuthVault home">
+        <div class="brand-icon" aria-hidden="true">🔐</div>
+        <span class="brand-name">AuthVault</span>
+      </a>
+
+      <!-- Heading -->
+      <header class="card-header">
+        <h1 class="card-title">Create account</h1>
+        <p class="card-subtitle">Secure, hashed credentials from day one</p>
+      </header>
+
+      <!-- Global alert -->
+      <div id="regAlert" class="alert" role="alert" aria-live="polite">
+        <span class="alert-icon">⚠</span>
+        <span class="alert-msg"></span>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="registerForm" class="auth-form" novalidate>
+
+        <!-- Username -->
+        <div class="field-group">
+          <label class="field-label" for="regUsername">Username</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="text"
+              id="regUsername"
+              name="username"
+              placeholder="cooluser42"
+              autocomplete="username"
+              spellcheck="false"
+              aria-describedby="errUsername"
+              minlength="3"
+            />
+            <span class="field-icon" aria-hidden="true">◎</span>
+          </div>
+          <span class="field-error" id="errUsername" aria-live="polite"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="field-group">
+          <label class="field-label" for="regEmail">Email address</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="email"
+              id="regEmail"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              spellcheck="false"
+              aria-describedby="errEmail"
+            />
+            <span class="field-icon" aria-hidden="true">✉</span>
+          </div>
+          <span class="field-error" id="errEmail" aria-live="polite"></span>
+        </div>
+
+        <!-- Password -->
+        <div class="field-group">
+          <label class="field-label" for="regPassword">Password</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="password"
+              id="regPassword"
+              name="password"
+              placeholder="Min 8 chars, 1 number"
+              autocomplete="new-password"
+              aria-describedby="errPassword pwHint"
+            />
+            <span class="field-icon" aria-hidden="true">🔑</span>
+            <button
+              type="button"
+              class="toggle-pw"
+              id="toggleRegPw"
+              aria-label="Show password"
+              title="Toggle visibility"
+            >👁</button>
+          </div>
+          <!-- Strength bars -->
+          <div class="pw-strength" aria-hidden="true">
+            <div class="pw-bar" id="bar1"></div>
+            <div class="pw-bar" id="bar2"></div>
+            <div class="pw-bar" id="bar3"></div>
+          </div>
+          <p class="pw-hint" id="pwHint">Min 8 chars, at least 1 number</p>
+          <span class="field-error" id="errPassword" aria-live="polite"></span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="field-group">
+          <label class="field-label" for="regConfirm">Confirm Password</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="password"
+              id="regConfirm"
+              name="confirmPassword"
+              placeholder="Repeat your password"
+              autocomplete="new-password"
+              aria-describedby="errConfirm"
+            />
+            <span class="field-icon" aria-hidden="true">✓</span>
+            <button
+              type="button"
+              class="toggle-pw"
+              id="toggleConfirmPw"
+              aria-label="Show confirm password"
+              title="Toggle visibility"
+            >👁</button>
+          </div>
+          <span class="field-error" id="errConfirm" aria-live="polite"></span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-primary" id="regBtn">
+          <span class="btn-label">Create Account</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+
+      </form>
+
+      <!-- Login link -->
+      <p class="nav-link-row">
+        Already have an account? <a href="index.html">Sign in</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

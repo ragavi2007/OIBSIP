@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — AuthVault</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background layers -->
+  <div class="bg-canvas" aria-hidden="true"></div>
+  <div class="bg-dots"   aria-hidden="true"></div>
+
+  <main class="page-wrapper">
+    <div class="auth-card" role="main">
+
+      <!-- Brand mark -->
+      <a href="index.html" class="brand" aria-label="AuthVault home">
+        <div class="brand-icon" aria-hidden="true">🔐</div>
+        <span class="brand-name">AuthVault</span>
+      </a>
+
+      <!-- Heading -->
+      <header class="card-header">
+        <h1 class="card-title">Welcome back</h1>
+        <p class="card-subtitle">Sign in to access your secure dashboard</p>
+      </header>
+
+      <!-- Global alert box (shown on error) -->
+      <div id="loginAlert" class="alert alert-error" role="alert" aria-live="polite">
+        <span class="alert-icon">⚠</span>
+        <span class="alert-msg"></span>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form" novalidate>
+
+        <!-- Username or Email -->
+        <div class="field-group">
+          <label class="field-label" for="loginIdentifier">Username or Email</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="text"
+              id="loginIdentifier"
+              name="identifier"
+              placeholder="you@example.com"
+              autocomplete="username email"
+              spellcheck="false"
+              aria-describedby="errIdentifier"
+            />
+            <span class="field-icon" aria-hidden="true">◎</span>
+          </div>
+          <span class="field-error" id="errIdentifier" aria-live="polite"></span>
+        </div>
+
+        <!-- Password -->
+        <div class="field-group">
+          <label class="field-label" for="loginPassword">Password</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="password"
+              id="loginPassword"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              aria-describedby="errLoginPw"
+            />
+            <span class="field-icon" aria-hidden="true">🔑</span>
+            <button
+              type="button"
+              class="toggle-pw"
+              id="toggleLoginPw"
+              aria-label="Show password"
+              title="Toggle visibility"
+            >👁</button>
+          </div>
+          <span class="field-error" id="errLoginPw" aria-live="polite"></span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-primary" id="loginBtn">
+          <span class="btn-label">Sign In</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+
+      </form>
+
+      <!-- Register link -->
+      <p class="nav-link-row">
+        Don't have an account? <a href="register.html">Create one</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

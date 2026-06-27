@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — AuthVault</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!--
+  dashboard-body uses different body alignment
+  (flex-start instead of center) so the topbar + scrollable content work.
+-->
+<body class="dashboard-body">
+
+  <!-- Animated background -->
+  <div class="bg-canvas" aria-hidden="true"></div>
+  <div class="bg-dots"   aria-hidden="true"></div>
+
+  <!-- ── Top navigation bar ────────────────────────────── -->
+  <header class="topbar">
+    <a href="dashboard.html" class="topbar-brand" aria-label="AuthVault dashboard">
+      <div class="brand-icon" style="width:32px;height:32px;font-size:0.95rem;" aria-hidden="true">🔐</div>
+      <span class="topbar-brand-name">AuthVault</span>
+    </a>
+
+    <div class="topbar-right">
+      <!-- User badge (hidden on very small screens via CSS) -->
+      <div class="user-badge" aria-label="Logged in as">
+        <div class="user-avatar" data-avatar aria-hidden="true">--</div>
+        <span data-username>User</span>
+      </div>
+
+      <!-- Logout button -->
+      <button class="btn-logout" data-logout aria-label="Sign out">
+        <span aria-hidden="true">⏻</span> Sign out
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main content ───────────────────────────────────── -->
+  <main id="dashboardPage" class="dash-content" role="main">
+
+    <!-- Welcome hero -->
+    <section class="welcome-hero" aria-labelledby="welcomeHeading">
+      <div class="welcome-chip" aria-hidden="true">✦ Authenticated Session</div>
+      <h1 class="welcome-title" id="welcomeHeading">
+        Hey, <span class="accent" data-username>there</span> 👋
+      </h1>
+      <p class="welcome-sub">
+        You're securely logged in. Your credentials were verified with SHA-256
+        hashing — your password was never stored in plain text.
+      </p>
+    </section>
+
+    <!-- Stats grid -->
+    <section class="stats-grid" aria-label="At a glance">
+
+      <article class="stat-card">
+        <div class="stat-icon c" aria-hidden="true">🛡</div>
+        <div class="stat-value" data-count="256" aria-label="256">0</div>
+        <div class="stat-label">Bit Hash Security</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon g" aria-hidden="true">✓</div>
+        <div class="stat-value" data-count="100" aria-label="100">0</div>
+        <div class="stat-label">Uptime %</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon b" aria-hidden="true">⚡</div>
+        <div class="stat-value" data-count="0" aria-label="0">0</div>
+        <div class="stat-label">Failed Login Attempts</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon o" aria-hidden="true">🔒</div>
+        <div class="stat-value" data-count="1" aria-label="1">0</div>
+        <div class="stat-label">Active Sessions</div>
+      </article>
+
+    </section>
+
+    <!-- Session info card -->
+    <section class="section-card" aria-label="Session details">
+      <div class="section-inner">
+        <h2 class="section-head">
+          <span aria-hidden="true">📋</span> Session Details
+        </h2>
+        <dl class="info-rows">
+
+          <div class="info-row">
+            <dt class="info-key">Status</dt>
+            <dd class="info-val ok">● Active</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="info-key">Logged in as</dt>
+            <dd class="info-val" data-username>—</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="info-key">Email</dt>
+            <dd class="info-val" id="sessionEmail">—</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="info-key">Login time</dt>
+            <dd class="info-val" id="sessionLoginTime">—</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="info-key">Auth method</dt>
+            <dd class="info-val pill">SHA-256 · localStorage</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="info-key">Password stored</dt>
+            <dd class="info-val ok">Hashed only ✓</dd>
+          </div>
+
+        </dl>
+      </div>
+    </section>
+
+    <!-- Security notice -->
+    <section class="section-card" aria-label="Security information" style="margin-top:1rem;">
+      <div class="section-inner">
+        <h2 class="section-head">
+          <span aria-hidden="true">ℹ</span> How this works
+        </h2>
+        <div class="info-rows">
+          <div class="info-row" style="display:block;padding-bottom:0.6rem;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <p style="color:var(--muted);font-size:0.875rem;line-height:1.7;">
+              <strong style="color:var(--text);">Password hashing:</strong>
+              When you register, your password is passed through
+              <strong style="color:var(--cyan);">SHA-256</strong> via the browser's native
+              <code style="background:rgba(0,212,255,0.08);padding:0.1em 0.4em;border-radius:4px;font-size:0.82rem;">Web Crypto API</code>
+              and only the resulting hash is saved to localStorage.
+              The original password is never written anywhere.
+            </p>
+          </div>
+          <div class="info-row" style="display:block;padding-bottom:0;">
+            <p style="color:var(--muted);font-size:0.875rem;line-height:1.7;">
+              <strong style="color:var(--text);">Session management:</strong>
+              On successful login, a session object (username, email, timestamp) is
+              stored in localStorage. Protected pages check for this object on load
+              and redirect unauthenticated visitors straight back to the login page.
+              Signing out clears the session immediately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
